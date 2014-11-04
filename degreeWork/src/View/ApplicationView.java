@@ -107,7 +107,6 @@ public class ApplicationView extends javax.swing.JFrame {
             }
         });
 
-        searchField.setBackground(new java.awt.Color(204, 204, 204));
         searchField.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         searchField.setText("search");
         searchField.setToolTipText("search word");
