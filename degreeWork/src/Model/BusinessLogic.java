@@ -166,33 +166,78 @@ public class BusinessLogic {
         Sheet sheet = workbook.getSheet(0);
 
         int rowsToCheck = sheet.getRows();
-        int receptionCount = 0;
-        int lagerCount = 0;
-        int trappCount = 0;
-        int nyckelrumCount = 0;
+        int reception12Count = 0;
+        int lager12Count = 0;
+        int trapp12Count = 0;
+        int nyckelrum12Count = 0;
+        int reception13Count = 0;
+        int lager13Count = 0;
+        int trapp13Count = 0;
+        int nyckelrum13Count = 0;
+        int reception14Count = 0;
+        int lager14Count = 0;
+        int trapp14Count = 0;
+        int nyckelrum14Count = 0;
+        int day = 0;
+        Calendar cal = Calendar.getInstance();
         DefaultCategoryDataset objDataset = new DefaultCategoryDataset();
 
         for (int i = 1; i < rowsToCheck; i++) {
             Cell roomCell = sheet.getCell(2, i);
+            DateCell dateCell = (DateCell) sheet.getCell(0, i);
+            Date date = dateCell.getDate();
+            cal.setTime(date);
+            day = cal.get(Calendar.DAY_OF_MONTH);
             String roomName = roomCell.getContents();
-            if (roomName.contains("7001")) { //Reception
-                receptionCount++;
+            if (roomName.contains("7001") && day == 12) { //Reception
+                reception12Count++;
             }
-            if (roomName.contains("11001")) { //Entrédörr lager
-                lagerCount++;
+            if (roomName.contains("11001") && day == 12) { //Entrédörr lager
+                lager12Count++;
             }
-            if (roomName.contains("3002")) { //trapphus
-                trappCount++;
+            if (roomName.contains("3002") && day == 12) { //trapphus
+                trapp12Count++;
             }
-            if (roomName.contains("14002")) { //nyckelrum
-                nyckelrumCount++;
+            if (roomName.contains("14002") && day == 12) { //nyckelrum
+                nyckelrum12Count++;
+            }
+            if (roomName.contains("7001") && day == 13) { //Reception
+                reception13Count++;
+            }
+            if (roomName.contains("11001") && day == 13) { //Entrédörr lager
+                lager13Count++;
+            }
+            if (roomName.contains("3002") && day == 13) { //trapphus
+                trapp13Count++;
+            }
+            if (roomName.contains("14002") && day == 13) { //nyckelrum
+                nyckelrum13Count++;
+            }
+            if (roomName.contains("7001") && day == 14) { //Reception
+                reception14Count++;
+            }
+            if (roomName.contains("11001") && day == 14) { //Entrédörr lager
+                lager14Count++;
+            }
+            if (roomName.contains("3002") && day == 14) { //trapphus
+                trapp14Count++;
+            }
+            if (roomName.contains("14002") && day == 14) { //nyckelrum
+                nyckelrum14Count++;
             }
         }
-        objDataset.setValue(receptionCount, "Q1", "Reception");
-        objDataset.setValue(lagerCount, "Q1", "Entrédörr lager");
-        objDataset.setValue(trappCount, "Q1", "Trapphus");
-        objDataset.setValue(nyckelrumCount, "Q1", "Nyckelrum");
-
+        objDataset.setValue(reception12Count, "12/10", "Reception");
+        objDataset.setValue(reception13Count, "13/10", "Reception");
+        objDataset.setValue(reception14Count, "14/10", "Reception");
+        objDataset.setValue(lager12Count, "12/10", "Entrédörr lager");
+        objDataset.setValue(lager13Count, "13/10", "Entrédörr lager");
+        objDataset.setValue(lager14Count, "14/10", "Entrédörr lager");
+        objDataset.setValue(trapp12Count, "12/10", "Trapphus");
+        objDataset.setValue(trapp13Count, "13/10", "Trapphus");
+        objDataset.setValue(trapp14Count, "14/10", "Trapphus");
+        objDataset.setValue(nyckelrum12Count, "12/10", "Nyckelrum");
+        objDataset.setValue(nyckelrum13Count, "13/10", "Nyckelrum");
+        objDataset.setValue(nyckelrum14Count, "14/10", "Nyckelrum");
         workbook.close();
         return objDataset;
     }
