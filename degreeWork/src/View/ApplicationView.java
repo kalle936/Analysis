@@ -77,6 +77,7 @@ public class ApplicationView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         pictureLabel = new javax.swing.JLabel();
         searchButton = new javax.swing.JButton();
         searchField = new javax.swing.JTextField();
@@ -88,7 +89,6 @@ public class ApplicationView extends javax.swing.JFrame {
         warningMenuItem = new javax.swing.JMenuItem();
         timeGraphMenuItem = new javax.swing.JMenuItem();
         roomGraphMenuItem = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Welcome!");
@@ -179,9 +179,6 @@ public class ApplicationView extends javax.swing.JFrame {
         menuBar.add(roomGraphMenuItem);
 
         jMenuBar1.add(menuBar);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -465,8 +462,8 @@ public class ApplicationView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JCheckBox martinCheckBox;
     private javax.swing.JMenu menuBar;
     private javax.swing.JCheckBox olleCheckBox;
