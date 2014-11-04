@@ -178,7 +178,7 @@ public class BusinessLogic {
         int lager14Count = 0;
         int trapp14Count = 0;
         int nyckelrum14Count = 0;
-        int day = 0;
+        int day;
         Calendar cal = Calendar.getInstance();
         DefaultCategoryDataset objDataset = new DefaultCategoryDataset();
 
