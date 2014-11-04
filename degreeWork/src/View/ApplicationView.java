@@ -250,8 +250,8 @@ public class ApplicationView extends javax.swing.JFrame {
                     contentPane.add(personalList);
                     JScrollPane scrollPane = new JScrollPane(contentPane);
                     displayFrame.add(scrollPane);
+                    displayFrame.setSize(500, 800);
                     displayFrame.setVisible(true);
-                    displayFrame.pack();
 
                     KeyStroke k = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
                     int w = JComponent.WHEN_IN_FOCUSED_WINDOW;
