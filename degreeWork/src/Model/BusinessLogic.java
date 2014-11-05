@@ -77,16 +77,16 @@ public class BusinessLogic {
         int rows = sheet.getRows();
         int foundOnColumn = 0;
         boolean found = false;
-            for (int i = 0; i < columns; i++) {
-                Cell cell = sheet.getCell(i, 0);
-                if (cell.getType() == CellType.LABEL && cell.getContents().contains(wordToFind)) {
-                    //Word is found! type out where it is and set the found variable to true.
-                    System.out.println("Found at Column: " + (i + 1));
-                    found = true;
-                    foundOnColumn = i;
-                }
+        for (int i = 0; i < columns; i++) {
+            Cell cell = sheet.getCell(i, 0);
+            if (cell.getType() == CellType.LABEL && cell.getContents().contains(wordToFind)) {
+                //Word is found! type out where it is and set the found variable to true.
+                System.out.println("Found at Column: " + (i + 1));
+                found = true;
+                foundOnColumn = i;
             }
-        
+        }
+
         //Could not find the specific columnIdentifier.
         if (found != true) {
             System.out.println("'Sheet does not contain '" + wordToFind + "'");
