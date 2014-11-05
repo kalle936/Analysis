@@ -17,7 +17,7 @@ import org.jfree.data.time.TimeSeriesCollection;
  */
 public class GraphHandler {
 
-    public static TimeSeriesCollection getTimeSeries() throws IOException, BiffException {
+    public static TimeSeriesCollection getTimeSeries() throws IOException, BiffException, InterruptedException {
         return BusinessLogic.getTimeSeries();
     }
 

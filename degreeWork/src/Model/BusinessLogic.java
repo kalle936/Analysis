@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import jxl.*;
 import jxl.read.biff.BiffException;
 import jxl.write.*;
@@ -74,17 +77,16 @@ public class BusinessLogic {
         int rows = sheet.getRows();
         int foundOnColumn = 0;
         boolean found = false;
-        for (int j = 0; j < rows; j++) {
             for (int i = 0; i < columns; i++) {
-                Cell cell = sheet.getCell(i, j);
+                Cell cell = sheet.getCell(i, 0);
                 if (cell.getType() == CellType.LABEL && cell.getContents().contains(wordToFind)) {
                     //Word is found! type out where it is and set the found variable to true.
-                    System.out.println("Column found at row " + (j + 1) + " column " + (i + 1));
+                    System.out.println("Found at Column: " + (i + 1));
                     found = true;
                     foundOnColumn = i;
                 }
             }
-        }
+        
         //Could not find the specific columnIdentifier.
         if (found != true) {
             System.out.println("'Sheet does not contain '" + wordToFind + "'");
@@ -124,8 +126,7 @@ public class BusinessLogic {
 
     }
 
-    public static TimeSeriesCollection getTimeSeries() throws IOException, BiffException {
-
+    public static TimeSeriesCollection getTimeSeries() throws IOException, BiffException, InterruptedException {
         Workbook workbook = Workbook.getWorkbook(new File("C:\\Users\\Kalgus\\Documents\\Events Macces 1 vecka.xls"));
         Sheet sheet = workbook.getSheet(0);
         TimeSeries series = new TimeSeries("time series", Day.class);

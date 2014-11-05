@@ -7,9 +7,11 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.paint.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -185,6 +187,7 @@ public class ApplicationView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchButton))
@@ -290,13 +293,12 @@ public class ApplicationView extends javax.swing.JFrame {
             ImageIcon icon = new ImageIcon(imageName);
             icon.getImage().flush();
             pictureLabel.setIcon(icon);
-        } else if(timeSlider.getValue() >=16 && olleCheckBox.isSelected() == true){
+        } else if (timeSlider.getValue() >= 16 && olleCheckBox.isSelected() == true) {
             String imageName = "C:\\Users\\Kalgus\\Documents\\NetBeansProjects\\degreeWork\\images\\OlleExit.png";
             ImageIcon icon = new ImageIcon(imageName);
             icon.getImage().flush();
-            pictureLabel.setIcon(icon);  
-        }  
-            else if (timeSlider.getValue() > 8 && timeSlider.getValue() < 13 && martinCheckBox.isSelected() == true) {
+            pictureLabel.setIcon(icon);
+        } else if (timeSlider.getValue() > 8 && timeSlider.getValue() < 13 && martinCheckBox.isSelected() == true) {
             String imageName = "C:\\Users\\Kalgus\\Documents\\NetBeansProjects\\degreeWork\\images\\martinEnter.png";
             ImageIcon icon = new ImageIcon(imageName);
             icon.getImage().flush();
@@ -399,7 +401,7 @@ public class ApplicationView extends javax.swing.JFrame {
             KeyStroke k = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
             int w = JComponent.WHEN_IN_FOCUSED_WINDOW;
             frame.getRootPane().registerKeyboardAction(e -> frame.dispose(), k, w);
-        } catch (IOException | BiffException ex) {
+        } catch (IOException | BiffException | InterruptedException ex) {
             Logger.getLogger(ApplicationView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_timeGraphMenuItemActionPerformed
