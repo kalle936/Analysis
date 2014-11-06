@@ -43,8 +43,6 @@ import org.jfree.data.time.TimeSeriesCollection;
 public class ApplicationView extends JFrame {
 
     private int count = 0;
-    JProgressBar progressBar;
-    JFrame f;
 
     /**
      * Creates new NewJFrame
@@ -54,18 +52,6 @@ public class ApplicationView extends JFrame {
      * @throws java.io.IOException
      */
     public ApplicationView() throws BiffException, WriteException, IOException {
-        f = new JFrame("JProgressBar Sample");
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Container content = f.getContentPane();
-        progressBar = new JProgressBar();
-        progressBar.setValue(0);
-        progressBar.setStringPainted(true);
-        TitledBorder border = BorderFactory.createTitledBorder("Reading...");
-        progressBar.setBorder(border);
-        content.add(progressBar, BorderLayout.NORTH);
-        f.setSize(300, 100);
-        f.setUndecorated(true);
-
         initComponents();
         timeSlider.setEnabled(false);
         KeyStroke k = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
@@ -415,7 +401,6 @@ public class ApplicationView extends JFrame {
                     true,
                     false
             );
-
             ChartFrame frame = new ChartFrame("Accesses over time", timeChart);
             frame.pack();
             frame.setVisible(true);
