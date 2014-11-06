@@ -101,6 +101,7 @@ public class BusinessLogic {
         int month;
         int year;
         int number;
+        int progress = 0;
         Calendar cal = Calendar.getInstance();
         List daySeen = new ArrayList();
         Day dayRead;
@@ -114,6 +115,23 @@ public class BusinessLogic {
             year = cal.get(Calendar.YEAR);
             dayRead = new Day(day, month, year);
             daySeen.add(dayRead);
+            switch (i) {
+                case 2000:
+                    System.out.println("Progress: " + 10 + "%");
+                    break;
+                case 6000:
+                    System.out.println("Progress: " + 30 + "%");
+                    break;
+                case 10000:
+                    System.out.println("Progress: " + 50 + "%");
+                    break;
+                case 15000:
+                    System.out.println("Progress: " + 75 + "%");
+                    break;
+                case 18000:
+                    System.out.println("Progress: " + 90 + "%");
+                    break;
+            }
             number = countNumberEqual(daySeen, dayRead);
             series.addOrUpdate(dayRead, number);
         }
