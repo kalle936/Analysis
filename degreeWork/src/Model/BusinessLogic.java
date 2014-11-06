@@ -1,5 +1,7 @@
 package Model;
 
+import java.awt.BorderLayout;
+import java.awt.Container;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -8,9 +10,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+import javax.swing.border.TitledBorder;
 import jxl.*;
 import jxl.read.biff.BiffException;
 import jxl.write.*;
@@ -62,38 +67,6 @@ public class BusinessLogic {
         return warningList;
     }
 
-    /**
-     * Method to search for a specific columnIdentifier. This is currently
-     * unused but can be if you know the name of the column but not what index
-     * it has in your sheet.
-     *
-     * @param ws WritableSheet that is to be searched through.
-     * @param wordToFind The specified columnIdentifier that the method is going
-     * to try and find.
-     */
-    private static int findColumn(Sheet sheet, String wordToFind) throws UnsupportedEncodingException {
-
-        int columns = sheet.getColumns();
-        int rows = sheet.getRows();
-        int foundOnColumn = 0;
-        boolean found = false;
-        for (int i = 0; i < columns; i++) {
-            Cell cell = sheet.getCell(i, 0);
-            if (cell.getType() == CellType.LABEL && cell.getContents().contains(wordToFind)) {
-                //Word is found! type out where it is and set the found variable to true.
-                System.out.println("Found at Column: " + (i + 1));
-                found = true;
-                foundOnColumn = i;
-            }
-        }
-
-        //Could not find the specific columnIdentifier.
-        if (found != true) {
-            System.out.println("'Sheet does not contain '" + wordToFind + "'");
-        }
-        return foundOnColumn;
-    }
-
     public static List showPersonalAccess(String name) throws IOException, BiffException {
         Workbook workbook = Workbook.getWorkbook(new File("C:\\Users\\Kalgus\\Documents\\Events Macces 1 vecka.xls"));
         Sheet sheet = workbook.getSheet(0);
@@ -102,9 +75,9 @@ public class BusinessLogic {
         Cell nameCell;
         Cell eventCell;
         Cell affectedCell;
-
         List personalList = new ArrayList();
         int rowsToCheck = sheet.getRows();
+        double progress = 0;
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 
         for (int i = 1; i < rowsToCheck; i++) {
@@ -113,7 +86,6 @@ public class BusinessLogic {
                 dateCell = (DateCell) sheet.getCell(0, i);
                 eventCell = sheet.getCell(1, i);
                 affectedCell = sheet.getCell(2, i);
-
                 if (!personalList.contains(dt.format(dateCell.getDate()) + " | " + eventCell.getContents() + " | " + affectedCell.getContents())) {
                     personalList.add(dt.format(dateCell.getDate()) + " | " + eventCell.getContents() + " | " + affectedCell.getContents());
                 }
@@ -127,6 +99,7 @@ public class BusinessLogic {
     }
 
     public static TimeSeriesCollection getTimeSeries() throws IOException, BiffException, InterruptedException {
+
         Workbook workbook = Workbook.getWorkbook(new File("C:\\Users\\Kalgus\\Documents\\Events Macces 1 vecka.xls"));
         Sheet sheet = workbook.getSheet(0);
         TimeSeries series = new TimeSeries("time series", Day.class);
@@ -136,10 +109,10 @@ public class BusinessLogic {
         int day;
         int month;
         int year;
-        int number = 0;
+        int number;
         Calendar cal = Calendar.getInstance();
         List daySeen = new ArrayList();
-        Day dayRead = null;
+        Day dayRead;
         for (int i = 1; i < rowsToCheck; i++) {
 
             DateCell dateCell = (DateCell) sheet.getCell(0, i);
@@ -150,14 +123,12 @@ public class BusinessLogic {
             year = cal.get(Calendar.YEAR);
             dayRead = new Day(day, month, year);
             daySeen.add(dayRead);
-
             number = countNumberEqual(daySeen, dayRead);
             series.addOrUpdate(dayRead, number);
         }
 
         dataset.addSeries(series);
         workbook.close();
-
         return dataset;
     }
 

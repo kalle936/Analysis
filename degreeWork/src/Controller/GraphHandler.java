@@ -7,6 +7,7 @@ package Controller;
 
 import Model.BusinessLogic;
 import java.io.IOException;
+import javax.swing.JProgressBar;
 import jxl.read.biff.BiffException;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.time.TimeSeriesCollection;

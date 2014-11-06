@@ -2,12 +2,16 @@ package View;
 
 import Controller.FrameHandler;
 import Controller.GraphHandler;
+import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.concurrent.Task;
 import javafx.scene.paint.Color;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -15,11 +19,14 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JRootPane;
 import javax.swing.JScrollPane;
 import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
+import javax.swing.border.TitledBorder;
 import jxl.read.biff.BiffException;
+import jxl.write.Border;
 import jxl.write.WriteException;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
@@ -37,9 +44,12 @@ import org.jfree.data.time.TimeSeriesCollection;
  *
  * @author kalgus
  */
-public class ApplicationView extends javax.swing.JFrame {
+public class ApplicationView extends JFrame {
 
     private int count = 0;
+    JProgressBar progressBar;
+    JFrame f;
+
     /**
      * Creates new NewJFrame
      *
@@ -48,6 +58,18 @@ public class ApplicationView extends javax.swing.JFrame {
      * @throws java.io.IOException
      */
     public ApplicationView() throws BiffException, WriteException, IOException {
+        f = new JFrame("JProgressBar Sample");
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Container content = f.getContentPane();
+        progressBar = new JProgressBar();
+        progressBar.setValue(0);
+        progressBar.setStringPainted(true);
+        TitledBorder border = BorderFactory.createTitledBorder("Reading...");
+        progressBar.setBorder(border);
+        content.add(progressBar, BorderLayout.NORTH);
+        f.setSize(300, 100);
+        f.setUndecorated(true);
+
         initComponents();
         timeSlider.setEnabled(false);
         KeyStroke k = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
@@ -269,9 +291,9 @@ public class ApplicationView extends javax.swing.JFrame {
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void searchFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldMouseClicked
-        if(count == 0){
-        searchField.setText(null);
-        count++;
+        if (count == 0) {
+            searchField.setText(null);
+            count++;
         }
     }//GEN-LAST:event_searchFieldMouseClicked
 
@@ -373,7 +395,7 @@ public class ApplicationView extends javax.swing.JFrame {
             contentPane.add(warningList);
             JScrollPane scrollPane = new JScrollPane(contentPane);
             displayFrame.add(scrollPane);
-            displayFrame.setSize(583, 800);
+            displayFrame.setSize(583, 950);
             displayFrame.setVisible(true);
 
             KeyStroke k = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
@@ -401,7 +423,6 @@ public class ApplicationView extends javax.swing.JFrame {
             ChartFrame frame = new ChartFrame("Accesses over time", timeChart);
             frame.pack();
             frame.setVisible(true);
-
             KeyStroke k = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
             int w = JComponent.WHEN_IN_FOCUSED_WINDOW;
             frame.getRootPane().registerKeyboardAction(e -> frame.dispose(), k, w);
