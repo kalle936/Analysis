@@ -39,6 +39,7 @@ import org.jfree.data.time.TimeSeriesCollection;
  */
 public class ApplicationView extends javax.swing.JFrame {
 
+    private int count = 0;
     /**
      * Creates new NewJFrame
      *
@@ -268,7 +269,10 @@ public class ApplicationView extends javax.swing.JFrame {
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void searchFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldMouseClicked
-        searchField.setText("");
+        if(count == 0){
+        searchField.setText(null);
+        count++;
+        }
     }//GEN-LAST:event_searchFieldMouseClicked
 
     /**
