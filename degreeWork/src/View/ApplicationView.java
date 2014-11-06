@@ -39,7 +39,6 @@ import org.jfree.data.time.TimeSeriesCollection;
 public class ApplicationView extends JFrame {
 
     private int count = 0;
-
     /**
      * Creates new NewJFrame
      *
@@ -365,6 +364,10 @@ public class ApplicationView extends JFrame {
         }
     }//GEN-LAST:event_olleCheckBoxActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     */
     private void warningMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_warningMenuItemActionPerformed
         try {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -387,6 +390,10 @@ public class ApplicationView extends JFrame {
         }
     }//GEN-LAST:event_warningMenuItemActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     */
     private void timeGraphMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeGraphMenuItemActionPerformed
         try {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -412,6 +419,10 @@ public class ApplicationView extends JFrame {
         }
     }//GEN-LAST:event_timeGraphMenuItemActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     */
     private void roomGraphMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomGraphMenuItemActionPerformed
         try {
             DefaultCategoryDataset objDataset = GraphHandler.getRoomDataset();
@@ -457,15 +468,12 @@ public class ApplicationView extends JFrame {
             java.util.logging.Logger.getLogger(ApplicationView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    new ApplicationView().setVisible(true);
-
-                } catch (BiffException | WriteException | IOException ex) {
-                    Logger.getLogger(ApplicationView.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
+                new ApplicationView().setVisible(true);
+                
+            } catch (BiffException | WriteException | IOException ex) {
+                Logger.getLogger(ApplicationView.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
