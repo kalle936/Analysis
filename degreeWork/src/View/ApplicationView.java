@@ -39,6 +39,7 @@ import org.jfree.data.time.TimeSeriesCollection;
 public class ApplicationView extends JFrame {
 
     private int count = 0;
+
     /**
      * Creates new NewJFrame
      *
@@ -365,8 +366,8 @@ public class ApplicationView extends JFrame {
     }//GEN-LAST:event_olleCheckBoxActionPerformed
 
     /**
-     * 
-     * @param evt 
+     *
+     * @param evt
      */
     private void warningMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_warningMenuItemActionPerformed
         try {
@@ -391,8 +392,8 @@ public class ApplicationView extends JFrame {
     }//GEN-LAST:event_warningMenuItemActionPerformed
 
     /**
-     * 
-     * @param evt 
+     *
+     * @param evt
      */
     private void timeGraphMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeGraphMenuItemActionPerformed
         try {
@@ -420,10 +421,11 @@ public class ApplicationView extends JFrame {
     }//GEN-LAST:event_timeGraphMenuItemActionPerformed
 
     /**
-     * 
-     * @param evt 
+     *
+     * @param evt
      */
     private void roomGraphMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomGraphMenuItemActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
             DefaultCategoryDataset objDataset = GraphHandler.getRoomDataset();
             JFreeChart objChart = ChartFactory.createBarChart(
@@ -443,6 +445,7 @@ public class ApplicationView extends JFrame {
             KeyStroke k = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
             int w = JComponent.WHEN_IN_FOCUSED_WINDOW;
             frame.getRootPane().registerKeyboardAction(e -> frame.dispose(), k, w);
+            this.setCursor(Cursor.getDefaultCursor());
             frame.setVisible(true);
         } catch (IOException | BiffException ex) {
             Logger.getLogger(ApplicationView.class.getName()).log(Level.SEVERE, null, ex);
@@ -471,7 +474,7 @@ public class ApplicationView extends JFrame {
         java.awt.EventQueue.invokeLater(() -> {
             try {
                 new ApplicationView().setVisible(true);
-                
+
             } catch (BiffException | WriteException | IOException ex) {
                 Logger.getLogger(ApplicationView.class.getName()).log(Level.SEVERE, null, ex);
             }
