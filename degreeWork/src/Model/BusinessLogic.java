@@ -233,14 +233,4 @@ public class BusinessLogic {
         return count;
     }
 
-    private static int countAccess(List personSeen, String name) {
-        int count = 0;
-        for (Object i : personSeen) {
-            if (i.equals(name)) {
-                count++;
-            }
-        }
-        return count;
-    }
-
 }
