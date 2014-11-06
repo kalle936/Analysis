@@ -2,6 +2,7 @@ package View;
 
 import Controller.FrameHandler;
 import Controller.GraphHandler;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -366,6 +367,7 @@ public class ApplicationView extends JFrame {
 
     private void warningMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_warningMenuItemActionPerformed
         try {
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             JList warningList = new JList(FrameHandler.showWarnings().toArray());
             JFrame displayFrame = new JFrame("Warnings");
             JPanel contentPane = new JPanel();
@@ -373,6 +375,7 @@ public class ApplicationView extends JFrame {
             JScrollPane scrollPane = new JScrollPane(contentPane);
             displayFrame.add(scrollPane);
             displayFrame.setSize(583, 950);
+            this.setCursor(Cursor.getDefaultCursor());
             displayFrame.setVisible(true);
 
             KeyStroke k = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
@@ -386,6 +389,7 @@ public class ApplicationView extends JFrame {
 
     private void timeGraphMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeGraphMenuItemActionPerformed
         try {
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             TimeSeriesCollection dataset = GraphHandler.getTimeSeries();
             JFreeChart timeChart = ChartFactory.createTimeSeriesChart(
                     "Count",
@@ -398,6 +402,7 @@ public class ApplicationView extends JFrame {
             );
             ChartFrame frame = new ChartFrame("Accesses over time", timeChart);
             frame.pack();
+            this.setCursor(Cursor.getDefaultCursor());
             frame.setVisible(true);
             KeyStroke k = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
             int w = JComponent.WHEN_IN_FOCUSED_WINDOW;
