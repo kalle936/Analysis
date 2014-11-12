@@ -37,7 +37,7 @@ import org.jfree.data.time.TimeSeriesCollection;
  * @author kalgus
  */
 public class ApplicationView extends JFrame {
-
+    
     private int count = 0;
 
     /**
@@ -54,19 +54,19 @@ public class ApplicationView extends JFrame {
         int w = JComponent.WHEN_IN_FOCUSED_WINDOW;
         this.getRootPane().registerKeyboardAction(e -> System.exit(0), k, w);
         this.setLocation(400, 200);
-
+        
         warningMenuItem.setMnemonic(KeyEvent.VK_W);
         warningMenuItem.setAccelerator(KeyStroke.getKeyStroke(
                 KeyEvent.VK_W, ActionEvent.ALT_MASK));
-
+        
         timeGraphMenuItem.setMnemonic(KeyEvent.VK_T);
         timeGraphMenuItem.setAccelerator(KeyStroke.getKeyStroke(
                 KeyEvent.VK_T, ActionEvent.ALT_MASK));
-
+        
         roomGraphMenuItem.setMnemonic(KeyEvent.VK_R);
         roomGraphMenuItem.setAccelerator(KeyStroke.getKeyStroke(
                 KeyEvent.VK_R, ActionEvent.ALT_MASK));
-
+        
         JRootPane pane = SwingUtilities.getRootPane(searchButton);
         pane.setDefaultButton(searchButton);
     }
@@ -91,6 +91,7 @@ public class ApplicationView extends JFrame {
         warningMenuItem = new javax.swing.JMenuItem();
         timeGraphMenuItem = new javax.swing.JMenuItem();
         roomGraphMenuItem = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Welcome!");
@@ -179,6 +180,15 @@ public class ApplicationView extends JFrame {
         });
         menuBar.add(roomGraphMenuItem);
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        jMenuItem2.setText("Exit");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        menuBar.add(jMenuItem2);
+
         jMenuBar1.add(menuBar);
 
         setJMenuBar(jMenuBar1);
@@ -256,13 +266,13 @@ public class ApplicationView extends JFrame {
                     displayFrame.add(scrollPane);
                     displayFrame.setSize(500, 800);
                     displayFrame.setVisible(true);
-
+                    
                     KeyStroke k = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
                     int w = JComponent.WHEN_IN_FOCUSED_WINDOW;
                     displayFrame.getRootPane().registerKeyboardAction(e -> displayFrame.dispose(), k, w);
                 }
             }
-
+            
         } catch (IOException | BiffException ex) {
             Logger.getLogger(ApplicationView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -362,7 +372,7 @@ public class ApplicationView extends JFrame {
         } else {
             timeSlider.setEnabled(false);
             timeSlider.setValue(7);
-
+            
         }
     }//GEN-LAST:event_olleCheckBoxActionPerformed
 
@@ -382,11 +392,11 @@ public class ApplicationView extends JFrame {
             displayFrame.setSize(583, 950);
             this.setCursor(Cursor.getDefaultCursor());
             displayFrame.setVisible(true);
-
+            
             KeyStroke k = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
             int w = JComponent.WHEN_IN_FOCUSED_WINDOW;
             displayFrame.getRootPane().registerKeyboardAction(e -> displayFrame.dispose(), k, w);
-
+            
         } catch (IOException | WriteException | BiffException ex) {
             Logger.getLogger(ApplicationView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -439,10 +449,10 @@ public class ApplicationView extends JFrame {
                     true,
                     false
             );
-
+            
             ChartFrame frame = new ChartFrame("Room Demo", objChart);
             frame.pack();
-
+            
             KeyStroke k = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
             int w = JComponent.WHEN_IN_FOCUSED_WINDOW;
             frame.getRootPane().registerKeyboardAction(e -> frame.dispose(), k, w);
@@ -452,6 +462,10 @@ public class ApplicationView extends JFrame {
             Logger.getLogger(ApplicationView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_roomGraphMenuItemActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * main method that creates the GUI and makes it visible to the user.
@@ -475,7 +489,7 @@ public class ApplicationView extends JFrame {
         java.awt.EventQueue.invokeLater(() -> {
             try {
                 new ApplicationView().setVisible(true);
-
+                
             } catch (BiffException | WriteException | IOException ex) {
                 Logger.getLogger(ApplicationView.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -484,6 +498,7 @@ public class ApplicationView extends JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JCheckBox martinCheckBox;
     private javax.swing.JMenu menuBar;
     private javax.swing.JCheckBox olleCheckBox;
