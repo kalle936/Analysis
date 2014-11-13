@@ -472,34 +472,6 @@ public class ApplicationView extends JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitMenuitemActionPerformed
 
-    /**
-     * main method that creates the GUI and makes it visible to the user.
-     *
-     * @param args the command line arguments
-     * @throws jxl.write.WriteException
-     * @throws jxl.read.biff.BiffException
-     */
-    public static void main(String args[]) throws WriteException, BiffException {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ApplicationView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            try {
-                new ApplicationView().setVisible(true);
-                
-            } catch (BiffException | WriteException | IOException ex) {
-                Logger.getLogger(ApplicationView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem exitMenuitem;
