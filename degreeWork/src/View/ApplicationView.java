@@ -88,10 +88,11 @@ public class ApplicationView extends JFrame {
         olleCheckBox = new javax.swing.JCheckBox();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuBar = new javax.swing.JMenu();
+        showMenuItem = new javax.swing.JMenu();
         warningMenuItem = new javax.swing.JMenuItem();
         timeGraphMenuItem = new javax.swing.JMenuItem();
         roomGraphMenuItem = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        exitMenuitem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Welcome!");
@@ -153,6 +154,8 @@ public class ApplicationView extends JFrame {
 
         menuBar.setText("File");
 
+        showMenuItem.setText("Show");
+
         warningMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.ALT_MASK));
         warningMenuItem.setText("Warnings");
         warningMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +163,7 @@ public class ApplicationView extends JFrame {
                 warningMenuItemActionPerformed(evt);
             }
         });
-        menuBar.add(warningMenuItem);
+        showMenuItem.add(warningMenuItem);
 
         timeGraphMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_MASK));
         timeGraphMenuItem.setText("Time Graph");
@@ -169,7 +172,7 @@ public class ApplicationView extends JFrame {
                 timeGraphMenuItemActionPerformed(evt);
             }
         });
-        menuBar.add(timeGraphMenuItem);
+        showMenuItem.add(timeGraphMenuItem);
 
         roomGraphMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK));
         roomGraphMenuItem.setText("Room Graph");
@@ -178,16 +181,18 @@ public class ApplicationView extends JFrame {
                 roomGraphMenuItemActionPerformed(evt);
             }
         });
-        menuBar.add(roomGraphMenuItem);
+        showMenuItem.add(roomGraphMenuItem);
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
-        jMenuItem2.setText("Exit");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        menuBar.add(showMenuItem);
+
+        exitMenuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        exitMenuitem.setText("Exit");
+        exitMenuitem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                exitMenuitemActionPerformed(evt);
             }
         });
-        menuBar.add(jMenuItem2);
+        menuBar.add(exitMenuitem);
 
         jMenuBar1.add(menuBar);
 
@@ -463,9 +468,9 @@ public class ApplicationView extends JFrame {
         }
     }//GEN-LAST:event_roomGraphMenuItemActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void exitMenuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuitemActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_exitMenuitemActionPerformed
 
     /**
      * main method that creates the GUI and makes it visible to the user.
@@ -497,8 +502,8 @@ public class ApplicationView extends JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem exitMenuitem;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JCheckBox martinCheckBox;
     private javax.swing.JMenu menuBar;
     private javax.swing.JCheckBox olleCheckBox;
@@ -506,6 +511,7 @@ public class ApplicationView extends JFrame {
     private javax.swing.JMenuItem roomGraphMenuItem;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchField;
+    private javax.swing.JMenu showMenuItem;
     private javax.swing.JMenuItem timeGraphMenuItem;
     private javax.swing.JSlider timeSlider;
     private javax.swing.JMenuItem warningMenuItem;

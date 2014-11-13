@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Model.BusinessLogic;
+import Model.DatasetCreator;
 import java.io.IOException;
 import java.util.List;
 import jxl.read.biff.BiffException;
@@ -18,11 +18,11 @@ import jxl.write.WriteException;
 public class FrameHandler {
 
     public static List showWarnings() throws IOException, WriteException, BiffException {
-        return BusinessLogic.showWarnings();
+        return DatasetCreator.showWarnings();
     }
 
     public static List showPersonalAccess(String name) throws IOException, BiffException {
-        return BusinessLogic.showPersonalAccess(name);
+        return DatasetCreator.showPersonalAccess(name);
     }
 
 }

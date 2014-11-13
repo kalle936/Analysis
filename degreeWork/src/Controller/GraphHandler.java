@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Model.BusinessLogic;
+import Model.DatasetCreator;
 import java.io.IOException;
 import jxl.read.biff.BiffException;
 import org.jfree.data.category.DefaultCategoryDataset;
@@ -18,11 +18,11 @@ import org.jfree.data.time.TimeSeriesCollection;
 public class GraphHandler {
 
     public static TimeSeriesCollection getTimeSeries() throws IOException, BiffException, InterruptedException {
-        return BusinessLogic.getTimeSeries();
+        return DatasetCreator.getTimeSeries();
     }
 
     public static DefaultCategoryDataset getRoomDataset() throws IOException, BiffException {
-        return BusinessLogic.getRoomDataset();
+        return DatasetCreator.getRoomDataset();
     }
 
 }

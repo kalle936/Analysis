@@ -15,9 +15,9 @@ import org.jfree.data.time.Day;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 
-public class BusinessLogic {
+public class DatasetCreator {
 
-    private BusinessLogic() throws BiffException, WriteException, IOException {
+    private DatasetCreator() throws BiffException, WriteException, IOException {
     }
 
     /**
