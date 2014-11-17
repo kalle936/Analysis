@@ -318,12 +318,17 @@ public class ApplicationView extends JFrame {
             ImageIcon icon = new ImageIcon(imageName);
             icon.getImage().flush();
             pictureLabel.setIcon(icon);
-        } else if (timeSlider.getValue() > 8 && timeSlider.getValue() < 13 && martinCheckBox.isSelected() == true) {
+        } else if (timeSlider.getValue() == 8 && martinCheckBox.isSelected() == true) {
+            String imageName = "C:\\Users\\Kalgus\\Documents\\NetBeansProjects\\degreeWork\\images\\BeforeMartinEnter.png";
+            ImageIcon icon = new ImageIcon(imageName);
+            icon.getImage().flush();
+            pictureLabel.setIcon(icon);
+        } else if (timeSlider.getValue() > 8 && timeSlider.getValue() < 10 && martinCheckBox.isSelected() == true) {
             String imageName = "C:\\Users\\Kalgus\\Documents\\NetBeansProjects\\degreeWork\\images\\martinEnter.png";
             ImageIcon icon = new ImageIcon(imageName);
             icon.getImage().flush();
             pictureLabel.setIcon(icon);
-        } else if (timeSlider.getValue() > 12 && timeSlider.getValue() < 15 && martinCheckBox.isSelected() == true) {
+        } else if (timeSlider.getValue() > 9 && timeSlider.getValue() < 15 && martinCheckBox.isSelected() == true) {
             String imageName = "C:\\Users\\Kalgus\\Documents\\NetBeansProjects\\degreeWork\\images\\Martin2.png";
             ImageIcon icon = new ImageIcon(imageName);
             icon.getImage().flush();
@@ -437,7 +442,9 @@ public class ApplicationView extends JFrame {
     }//GEN-LAST:event_timeGraphMenuItemActionPerformed
 
     /**
-     *
+     * Method that asks the controller for a dataset and in turn creates the graph object
+     * needed to represent the data.
+     * 
      * @param evt
      */
     private void roomGraphMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomGraphMenuItemActionPerformed
