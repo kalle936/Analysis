@@ -68,7 +68,6 @@ public class DatasetCreator {
         Cell affectedCell;
         List personalList = new ArrayList();
         int rowsToCheck = sheet.getRows();
-        double progress = 0;
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 
         for (int i = 1; i < rowsToCheck; i++) {
@@ -101,7 +100,6 @@ public class DatasetCreator {
         int month;
         int year;
         int number;
-        int progress = 0;
         Calendar cal = Calendar.getInstance();
         List daySeen = new ArrayList();
         Day dayRead;

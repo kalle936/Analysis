@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -80,6 +81,7 @@ public class ApplicationView extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jComboBox1 = new javax.swing.JComboBox();
         pictureLabel = new javax.swing.JLabel();
         searchButton = new javax.swing.JButton();
         searchField = new javax.swing.JTextField();
@@ -94,8 +96,9 @@ public class ApplicationView extends JFrame {
         roomGraphMenuItem = new javax.swing.JMenuItem();
         exitMenuitem = new javax.swing.JMenuItem();
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Welcome!");
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
@@ -292,7 +295,7 @@ public class ApplicationView extends JFrame {
     }//GEN-LAST:event_searchFieldMouseClicked
 
     /**
-     * Event handles for when the the slider called 'TimeSlider' gets moved
+     * Event handles for when the the slider called 'TimeSlider' gets moved.
      * (changes value)
      *
      * @param evt
@@ -387,7 +390,8 @@ public class ApplicationView extends JFrame {
     }//GEN-LAST:event_olleCheckBoxActionPerformed
 
     /**
-     *
+     * 
+     * 
      * @param evt
      */
     private void warningMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_warningMenuItemActionPerformed
@@ -482,6 +486,7 @@ public class ApplicationView extends JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem exitMenuitem;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JCheckBox martinCheckBox;
     private javax.swing.JMenu menuBar;
