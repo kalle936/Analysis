@@ -416,7 +416,9 @@ public class ApplicationView extends JFrame {
     }//GEN-LAST:event_warningMenuItemActionPerformed
 
     /**
-     *
+     *Method that is called when the Time graph option is selected. it fetches the appropriate
+     * dataset and creates the time chart and makes it visible for the user.
+     * 
      * @param evt
      */
     private void timeGraphMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeGraphMenuItemActionPerformed
