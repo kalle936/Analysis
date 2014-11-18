@@ -21,10 +21,10 @@ public class DatasetCreator {
     }
 
     /**
-     * Method that copies the information in the main excel file into the
-     * temporary holding place where changes can be made.
+     * Method that creates a list of formatted strings containing all warnings that exist in
+     * the excel file.
      *
-     * @return
+     * @return List of warnings.
      * @throws IOException
      * @throws WriteException
      * @throws jxl.read.biff.BiffException
@@ -58,6 +58,15 @@ public class DatasetCreator {
         return warningList;
     }
 
+    /**
+     * method that creates a list of a certain persons accesses. It ignores duplicates (these might exist in
+     * the excel file).
+     * 
+     * @param name The name of the person whose accesses you want to find.
+     * @return List of the specific persons accesses
+     * @throws IOException
+     * @throws BiffException 
+     */
     public static List showPersonalAccess(String name) throws IOException, BiffException {
         Workbook workbook = Workbook.getWorkbook(new File("C:\\Users\\Kalgus\\Documents\\Events Macces 1 vecka.xls"));
         Sheet sheet = workbook.getSheet(0);
@@ -88,6 +97,15 @@ public class DatasetCreator {
 
     }
 
+    /**
+     * Method that picks out all the date of all accesses made in the excel file and counts how many there are.
+     * they are countet with respect to the date that they were registered in the excel file.
+     * 
+     * @return
+     * @throws IOException
+     * @throws BiffException
+     * @throws InterruptedException 
+     */
     public static TimeSeriesCollection getTimeSeries() throws IOException, BiffException, InterruptedException {
 
         Workbook workbook = Workbook.getWorkbook(new File("C:\\Users\\Kalgus\\Documents\\Events Macces 1 vecka.xls"));
@@ -139,6 +157,13 @@ public class DatasetCreator {
         return dataset;
     }
 
+    /**
+     * Method that creates the dataset nessesary for building a bar-graph in the view layer.
+     * 
+     * @return returns a DefaultCategoryDataset that is needed to create a bar graph.
+     * @throws IOException
+     * @throws BiffException 
+     */
     @SuppressWarnings("empty-statement")
     public static DefaultCategoryDataset getRoomDataset() throws IOException, BiffException {
         Workbook workbook = Workbook.getWorkbook(new File("C:\\Users\\Kalgus\\Documents\\Events Macces 1 vecka.xls"));
@@ -221,6 +246,12 @@ public class DatasetCreator {
         return objDataset;
     }
 
+    /**
+     * Counts how many ocurrances of a certain Day already exists in a list.
+     * @param itemList
+     * @param itemToCheck
+     * @return 
+     */
     private static int countNumberEqual(List itemList, Day itemToCheck) {
         int count = 0;
         for (Object i : itemList) {
