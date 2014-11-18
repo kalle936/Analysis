@@ -247,7 +247,7 @@ public class DatasetCreator {
     }
 
     /**
-     * Counts how many ocurrances of a certain Day already exists in a list.
+     * Counts how many ocurrances of a certain Day already exists in a list.    
      * @param itemList
      * @param itemToCheck
      * @return 

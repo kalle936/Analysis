@@ -17,7 +17,8 @@ import jxl.write.WriteException;
  */
 public class StartUp {
     /**
-     * main method that creates the GUI and makes it visible to the user.
+     * main method that creates the GUI and makes it visible to the user. Also modifies the look and feel 
+     * of the graphical user interface.
      *
      * @param args the command line arguments
      * @throws jxl.write.WriteException
