@@ -27,13 +27,9 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.time.TimeSeriesCollection;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
- *
+ *Class that creates and displays the graphical user interface and it's components. fetches information
+ *from the model layer with the help of the controller(s)
  * @author kalgus
  */
 public class ApplicationView extends JFrame {
@@ -389,7 +385,9 @@ public class ApplicationView extends JFrame {
     }//GEN-LAST:event_olleCheckBoxActionPerformed
 
     /**
-     * 
+     * Method called when the warning option is chosen from the GUI. fetches the nessesary data
+     * and creates a window that will contain information about all the warnings that exist in the
+     * Excel file.
      * 
      * @param evt
      */
