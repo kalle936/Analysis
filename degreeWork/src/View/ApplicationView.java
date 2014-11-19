@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -467,7 +468,6 @@ public class ApplicationView extends JFrame {
             
             ChartFrame frame = new ChartFrame("Room Demo", objChart);
             frame.pack();
-            
             KeyStroke k = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
             int w = JComponent.WHEN_IN_FOCUSED_WINDOW;
             frame.getRootPane().registerKeyboardAction(e -> frame.dispose(), k, w);

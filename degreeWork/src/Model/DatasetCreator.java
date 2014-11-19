@@ -193,40 +193,41 @@ public class DatasetCreator {
             cal.setTime(date);
             day = cal.get(Calendar.DAY_OF_MONTH);
             String roomName = roomCell.getContents();
+            
             if (roomName.contains("7001") && day == 12) { //Reception
                 reception12Count++;
             }
-            if (roomName.contains("11001") && day == 12) { //Entrédörr lager
+            else if (roomName.contains("11001") && day == 12) { //Entrédörr lager
                 lager12Count++;
             }
-            if (roomName.contains("3002") && day == 12) { //trapphus
+            else if (roomName.contains("3002") && day == 12) { //trapphus
                 trapp12Count++;
             }
-            if (roomName.contains("14002") && day == 12) { //nyckelrum
+            else if (roomName.contains("14002") && day == 12) { //nyckelrum
                 nyckelrum12Count++;
             }
-            if (roomName.contains("7001") && day == 13) { //Reception
+            else if (roomName.contains("7001") && day == 13) { //Reception
                 reception13Count++;
             }
-            if (roomName.contains("11001") && day == 13) { //Entrédörr lager
+            else if (roomName.contains("11001") && day == 13) { //Entrédörr lager
                 lager13Count++;
             }
-            if (roomName.contains("3002") && day == 13) { //trapphus
+            else if (roomName.contains("3002") && day == 13) { //trapphus
                 trapp13Count++;
             }
-            if (roomName.contains("14002") && day == 13) { //nyckelrum
+            else if (roomName.contains("14002") && day == 13) { //nyckelrum
                 nyckelrum13Count++;
             }
-            if (roomName.contains("7001") && day == 14) { //Reception
+            else if (roomName.contains("7001") && day == 14) { //Reception
                 reception14Count++;
             }
-            if (roomName.contains("11001") && day == 14) { //Entrédörr lager
+            else if (roomName.contains("11001") && day == 14) { //Entrédörr lager
                 lager14Count++;
             }
-            if (roomName.contains("3002") && day == 14) { //trapphus
+            else if (roomName.contains("3002") && day == 14) { //trapphus
                 trapp14Count++;
             }
-            if (roomName.contains("14002") && day == 14) { //nyckelrum
+            else if (roomName.contains("14002") && day == 14) { //nyckelrum
                 nyckelrum14Count++;
             }
         }
