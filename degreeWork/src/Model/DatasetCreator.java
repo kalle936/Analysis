@@ -176,18 +176,18 @@ public class DatasetCreator {
         Sheet sheet = workbook.getSheet(0);
 
         int rowsToCheck = sheet.getRows();
-        int reception12Count = 0;
-        int lager12Count = 0;
-        int trapp12Count = 0;
-        int nyckelrum12Count = 0;
-        int reception13Count = 0;
-        int lager13Count = 0;
-        int trapp13Count = 0;
-        int nyckelrum13Count = 0;
-        int reception14Count = 0;
-        int lager14Count = 0;
-        int trapp14Count = 0;
-        int nyckelrum14Count = 0;
+        int receptionCount12 = 0;
+        int lagerCount12 = 0;
+        int plan5Count12 = 0;
+        int nyckelrumCount12 = 0;
+        int receptionCount13 = 0;
+        int lagerCount13 = 0;
+        int plan5Count13 = 0;
+        int nyckelrumCount13 = 0;
+        int receptionCount14 = 0;
+        int lagerCount14 = 0;
+        int plan5Count14 = 0;
+        int nyckelrumCount14 = 0;
         int day;
         List timestamps = new ArrayList();
         Calendar cal = Calendar.getInstance();
@@ -204,46 +204,46 @@ public class DatasetCreator {
             if (timestamps.contains(date)) {
 
                 if (roomName.contains("7001") && day == 12) { //Reception
-                    reception12Count++;
+                    receptionCount12++;
                 } else if (roomName.contains("11001") && day == 12) { //Entrédörr lager
-                    lager12Count++;
+                    lagerCount12++;
                 } else if (roomName.contains("3002") && day == 12) { //trapphus
-                    trapp12Count++;
+                    plan5Count12++;
                 } else if (roomName.contains("14002") && day == 12) { //nyckelrum
-                    nyckelrum12Count++;
+                    nyckelrumCount12++;
                 } else if (roomName.contains("7001") && day == 13) { //Reception
-                    reception13Count++;
+                    receptionCount13++;
                 } else if (roomName.contains("11001") && day == 13) { //Entrédörr lager
-                    lager13Count++;
+                    lagerCount13++;
                 } else if (roomName.contains("3002") && day == 13) { //trapphus
-                    trapp13Count++;
+                    plan5Count13++;
                 } else if (roomName.contains("14002") && day == 13) { //nyckelrum
-                    nyckelrum13Count++;
+                    nyckelrumCount13++;
                 } else if (roomName.contains("7001") && day == 14) { //Reception
-                    reception14Count++;
+                    receptionCount14++;
                 } else if (roomName.contains("11001") && day == 14) { //Entrédörr lager
-                    lager14Count++;
+                    lagerCount14++;
                 } else if (roomName.contains("3002") && day == 14) { //trapphus
-                    trapp14Count++;
+                    plan5Count14++;
                 } else if (roomName.contains("14002") && day == 14) { //nyckelrum
-                    nyckelrum14Count++;
+                    nyckelrumCount14++;
                 }
             }else{
                 timestamps.add(date);
             }
         }
-        objDataset.setValue(reception12Count, "Reception", "12/10");
-        objDataset.setValue(reception13Count, "Reception", "13/10");
-        objDataset.setValue(reception14Count, "Reception", "14/10");
-        objDataset.setValue(lager12Count, "Entrédörr lager", "12/10");
-        objDataset.setValue(lager13Count, "Entrédörr lager", "13/10");
-        objDataset.setValue(lager14Count, "Entrédörr lager", "14/10");
-        objDataset.setValue(trapp12Count, "Trapphus", "12/10");
-        objDataset.setValue(trapp13Count, "Trapphus", "13/10");
-        objDataset.setValue(trapp14Count, "Trapphus", "14/10");
-        objDataset.setValue(nyckelrum12Count, "Nyckelrum", "12/10");
-        objDataset.setValue(nyckelrum13Count, "Nyckelrum", "13/10");
-        objDataset.setValue(nyckelrum14Count, "Nyckelrum", "14/10");
+        objDataset.setValue(receptionCount12, "Reception", "12/10");
+        objDataset.setValue(receptionCount13, "Reception", "13/10");
+        objDataset.setValue(receptionCount14, "Reception", "14/10");
+        objDataset.setValue(lagerCount12, "Entrédörr lager", "12/10");
+        objDataset.setValue(lagerCount13, "Entrédörr lager", "13/10");
+        objDataset.setValue(lagerCount14, "Entrédörr lager", "14/10");
+        objDataset.setValue(plan5Count12, "Plan 5", "12/10");
+        objDataset.setValue(plan5Count13, "Plan 5", "13/10");
+        objDataset.setValue(plan5Count14, "Plan 5", "14/10");
+        objDataset.setValue(nyckelrumCount12, "Nyckelrum", "12/10");
+        objDataset.setValue(nyckelrumCount13, "Nyckelrum", "13/10");
+        objDataset.setValue(nyckelrumCount14, "Nyckelrum", "14/10");
         workbook.close();
         return objDataset;
     }
