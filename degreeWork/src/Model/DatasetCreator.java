@@ -19,9 +19,10 @@ public class DatasetCreator {
 
     private DatasetCreator() throws BiffException, WriteException, IOException {
     }
+
     /**
-     * Method that creates a list of formatted strings containing all warnings that exist in
-     * the excel file.
+     * Method that creates a list of formatted strings containing all warnings
+     * that exist in the excel file.
      *
      * @return List of warnings.
      * @throws IOException
@@ -59,13 +60,13 @@ public class DatasetCreator {
     }
 
     /**
-     * method that creates a list of a certain persons accesses. It ignores duplicates (these might exist in
-     * the excel file).
-     * 
+     * method that creates a list of a certain persons accesses. It ignores
+     * duplicates (these might exist in the excel file).
+     *
      * @param name The name of the person whose accesses you want to find.
      * @return List of the specific persons accesses
      * @throws IOException
-     * @throws BiffException 
+     * @throws BiffException
      */
     public static List showPersonalAccess(String name) throws IOException, BiffException {
         WorkbookSettings ws = new WorkbookSettings();
@@ -99,14 +100,15 @@ public class DatasetCreator {
 
     }
 
-    /** 
-     * Method that picks out all the date of all accesses made in the excel file and counts how many there are.
-     * they are countet with respect to the date that they were registered in the excel file.
-     * 
+    /**
+     * Method that picks out all the date of all accesses made in the excel file
+     * and counts how many there are. they are countet with respect to the date
+     * that they were registered in the excel file.
+     *
      * @return
      * @throws IOException
      * @throws BiffException
-     * @throws InterruptedException 
+     * @throws InterruptedException
      */
     public static TimeSeriesCollection getTimeSeries() throws IOException, BiffException, InterruptedException {
 
@@ -160,11 +162,13 @@ public class DatasetCreator {
     }
 
     /**
-     * Method that creates the dataset nessesary for building a bar-graph in the view layer.
-     * 
-     * @return returns a DefaultCategoryDataset that is needed to create a bar graph.
+     * Method that creates the dataset nessesary for building a bar-graph in the
+     * view layer.
+     *
+     * @return returns a DefaultCategoryDataset that is needed to create a bar
+     * graph.
      * @throws IOException
-     * @throws BiffException 
+     * @throws BiffException
      */
     @SuppressWarnings("empty-statement")
     public static DefaultCategoryDataset getRoomDataset() throws IOException, BiffException {
@@ -185,6 +189,7 @@ public class DatasetCreator {
         int trapp14Count = 0;
         int nyckelrum14Count = 0;
         int day;
+        List timestamps = new ArrayList();
         Calendar cal = Calendar.getInstance();
         DefaultCategoryDataset objDataset = new DefaultCategoryDataset();
 
@@ -195,42 +200,36 @@ public class DatasetCreator {
             cal.setTime(date);
             day = cal.get(Calendar.DAY_OF_MONTH);
             String roomName = roomCell.getContents();
-            
-            if (roomName.contains("7001") && day == 12) { //Reception
-                reception12Count++;
-            }
-            else if (roomName.contains("11001") && day == 12) { //Entrédörr lager
-                lager12Count++;
-            }
-            else if (roomName.contains("3002") && day == 12) { //trapphus
-                trapp12Count++;
-            }
-            else if (roomName.contains("14002") && day == 12) { //nyckelrum
-                nyckelrum12Count++;
-            }
-            else if (roomName.contains("7001") && day == 13) { //Reception
-                reception13Count++;
-            }
-            else if (roomName.contains("11001") && day == 13) { //Entrédörr lager
-                lager13Count++;
-            }
-            else if (roomName.contains("3002") && day == 13) { //trapphus
-                trapp13Count++;
-            }
-            else if (roomName.contains("14002") && day == 13) { //nyckelrum
-                nyckelrum13Count++;
-            }
-            else if (roomName.contains("7001") && day == 14) { //Reception
-                reception14Count++;
-            }
-            else if (roomName.contains("11001") && day == 14) { //Entrédörr lager
-                lager14Count++;
-            }
-            else if (roomName.contains("3002") && day == 14) { //trapphus
-                trapp14Count++;
-            }
-            else if (roomName.contains("14002") && day == 14) { //nyckelrum
-                nyckelrum14Count++;
+
+            if (timestamps.contains(date)) {
+
+                if (roomName.contains("7001") && day == 12) { //Reception
+                    reception12Count++;
+                } else if (roomName.contains("11001") && day == 12) { //Entrédörr lager
+                    lager12Count++;
+                } else if (roomName.contains("3002") && day == 12) { //trapphus
+                    trapp12Count++;
+                } else if (roomName.contains("14002") && day == 12) { //nyckelrum
+                    nyckelrum12Count++;
+                } else if (roomName.contains("7001") && day == 13) { //Reception
+                    reception13Count++;
+                } else if (roomName.contains("11001") && day == 13) { //Entrédörr lager
+                    lager13Count++;
+                } else if (roomName.contains("3002") && day == 13) { //trapphus
+                    trapp13Count++;
+                } else if (roomName.contains("14002") && day == 13) { //nyckelrum
+                    nyckelrum13Count++;
+                } else if (roomName.contains("7001") && day == 14) { //Reception
+                    reception14Count++;
+                } else if (roomName.contains("11001") && day == 14) { //Entrédörr lager
+                    lager14Count++;
+                } else if (roomName.contains("3002") && day == 14) { //trapphus
+                    trapp14Count++;
+                } else if (roomName.contains("14002") && day == 14) { //nyckelrum
+                    nyckelrum14Count++;
+                }
+            }else{
+                timestamps.add(date);
             }
         }
         objDataset.setValue(reception12Count, "12/10", "Reception");
@@ -250,10 +249,11 @@ public class DatasetCreator {
     }
 
     /**
-     * Counts how many ocurrances of a certain Day already exists in a list.    
+     * Counts how many ocurrances of a certain Day already exists in a list.
+     *
      * @param itemList
      * @param itemToCheck
-     * @return 
+     * @return
      */
     private static int countNumberEqual(List itemList, Day itemToCheck) {
         int count = 0;
