@@ -232,18 +232,18 @@ public class DatasetCreator {
                 timestamps.add(date);
             }
         }
-        objDataset.setValue(reception12Count, "12/10", "Reception");
-        objDataset.setValue(reception13Count, "13/10", "Reception");
-        objDataset.setValue(reception14Count, "14/10", "Reception");
-        objDataset.setValue(lager12Count, "12/10", "Entrédörr lager");
-        objDataset.setValue(lager13Count, "13/10", "Entrédörr lager");
-        objDataset.setValue(lager14Count, "14/10", "Entrédörr lager");
-        objDataset.setValue(trapp12Count, "12/10", "Trapphus");
-        objDataset.setValue(trapp13Count, "13/10", "Trapphus");
-        objDataset.setValue(trapp14Count, "14/10", "Trapphus");
-        objDataset.setValue(nyckelrum12Count, "12/10", "Nyckelrum");
-        objDataset.setValue(nyckelrum13Count, "13/10", "Nyckelrum");
-        objDataset.setValue(nyckelrum14Count, "14/10", "Nyckelrum");
+        objDataset.setValue(reception12Count, "Reception", "12/10");
+        objDataset.setValue(reception13Count, "Reception", "13/10");
+        objDataset.setValue(reception14Count, "Reception", "14/10");
+        objDataset.setValue(lager12Count, "Entrédörr lager", "12/10");
+        objDataset.setValue(lager13Count, "Entrédörr lager", "13/10");
+        objDataset.setValue(lager14Count, "Entrédörr lager", "14/10");
+        objDataset.setValue(trapp12Count, "Trapphus", "12/10");
+        objDataset.setValue(trapp13Count, "Trapphus", "13/10");
+        objDataset.setValue(trapp14Count, "Trapphus", "14/10");
+        objDataset.setValue(nyckelrum12Count, "Nyckelrum", "12/10");
+        objDataset.setValue(nyckelrum13Count, "Nyckelrum", "13/10");
+        objDataset.setValue(nyckelrum14Count, "Nyckelrum", "14/10");
         workbook.close();
         return objDataset;
     }
