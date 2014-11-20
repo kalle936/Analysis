@@ -137,7 +137,6 @@ public class DatasetCreator {
             dayRead = new Day(day, month, year);
             Cell doorCell = sheet.getCell(1, i);
             String door = doorCell.getContents();
-            System.out.println(door);
 
             if (door.equalsIgnoreCase("Dörr Upplåst") || door.equals("Tvångsöppnad")) {
                 if (isUnique(date)) {
