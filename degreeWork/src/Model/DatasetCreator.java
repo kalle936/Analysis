@@ -19,7 +19,6 @@ public class DatasetCreator {
 
     private DatasetCreator() throws BiffException, WriteException, IOException {
     }
-
     /**
      * Method that creates a list of formatted strings containing all warnings that exist in
      * the excel file.
@@ -34,7 +33,6 @@ public class DatasetCreator {
         ws.setEncoding("Cp1252");
         Workbook workbook = Workbook.getWorkbook(new File("C:\\Users\\Kalgus\\Documents\\Events Macces 1 vecka.xls"), ws);
         Sheet sheet = workbook.getSheet(0);
-
         DateCell dateCell;
         Cell nameCell;
         Cell affectedCell;
