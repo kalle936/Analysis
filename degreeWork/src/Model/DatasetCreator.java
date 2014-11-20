@@ -16,7 +16,7 @@ import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 
 public class DatasetCreator {
-    
+
     private DatasetCreator() throws BiffException, WriteException, IOException {
     }
 
@@ -111,8 +111,9 @@ public class DatasetCreator {
      * @throws InterruptedException
      */
     public static TimeSeriesCollection getTimeSeries() throws IOException, BiffException, InterruptedException {
-
-        Workbook workbook = Workbook.getWorkbook(new File("C:\\Users\\Kalgus\\Documents\\Events Macces 1 vecka.xls"));
+        WorkbookSettings ws = new WorkbookSettings();
+        ws.setEncoding("Cp1252");
+        Workbook workbook = Workbook.getWorkbook(new File("C:\\Users\\Kalgus\\Documents\\Events Macces 1 vecka.xls"), ws);
         Sheet sheet = workbook.getSheet(0);
         TimeSeries series = new TimeSeries("time series", Day.class);
         TimeSeriesCollection dataset = new TimeSeriesCollection();
@@ -123,7 +124,7 @@ public class DatasetCreator {
         int year;
         int number;
         Calendar cal = Calendar.getInstance();
-        List daysSeen = new ArrayList();
+        List daySeen = new ArrayList();
         Day dayRead;
         for (int i = 1; i < rowsToCheck; i++) {
 
@@ -134,9 +135,15 @@ public class DatasetCreator {
             month = cal.get(Calendar.MONTH) + 1;
             year = cal.get(Calendar.YEAR);
             dayRead = new Day(day, month, year);
-            daysSeen.add(dayRead);
-            number = countNumberEqual(daysSeen, dayRead);
-            series.addOrUpdate(dayRead, number);
+            Cell doorCell = sheet.getCell(1, i);
+            String door = doorCell.getContents();
+            System.out.println(door);
+
+            if (door.equalsIgnoreCase("Dörr Upplåst") || door.equals("Tvångsöppnad")) {
+                daySeen.add(dayRead);
+                number = countNumberEqual(daySeen, dayRead);
+                series.addOrUpdate(dayRead, number);
+            }
         }
 
         dataset.addSeries(series);
@@ -211,7 +218,7 @@ public class DatasetCreator {
                 } else if (roomName.contains("14002") && day == 14) { //nyckelrum
                     nyckelrumCount14++;
                 }
-            }else{
+            } else {
                 timestamps.add(date);
             }
         }
