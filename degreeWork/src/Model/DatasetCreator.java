@@ -30,7 +30,9 @@ public class DatasetCreator {
      * @throws jxl.read.biff.BiffException
      */
     public static List showWarnings() throws IOException, WriteException, BiffException {
-        Workbook workbook = Workbook.getWorkbook(new File("C:\\Users\\Kalgus\\Documents\\Events Macces 1 vecka.xls"));
+        WorkbookSettings ws = new WorkbookSettings();
+        ws.setEncoding("Cp1252");
+        Workbook workbook = Workbook.getWorkbook(new File("C:\\Users\\Kalgus\\Documents\\Events Macces 1 vecka.xls"), ws);
         Sheet sheet = workbook.getSheet(0);
 
         DateCell dateCell;
@@ -68,7 +70,9 @@ public class DatasetCreator {
      * @throws BiffException 
      */
     public static List showPersonalAccess(String name) throws IOException, BiffException {
-        Workbook workbook = Workbook.getWorkbook(new File("C:\\Users\\Kalgus\\Documents\\Events Macces 1 vecka.xls"));
+        WorkbookSettings ws = new WorkbookSettings();
+        ws.setEncoding("Cp1252");
+        Workbook workbook = Workbook.getWorkbook(new File("C:\\Users\\Kalgus\\Documents\\Events Macces 1 vecka.xls"), ws);
         Sheet sheet = workbook.getSheet(0);
 
         DateCell dateCell;
@@ -97,7 +101,7 @@ public class DatasetCreator {
 
     }
 
-    /**
+    /** 
      * Method that picks out all the date of all accesses made in the excel file and counts how many there are.
      * they are countet with respect to the date that they were registered in the excel file.
      * 
