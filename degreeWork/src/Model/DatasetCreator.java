@@ -164,7 +164,9 @@ public class DatasetCreator {
      */
     @SuppressWarnings("empty-statement")
     public static DefaultCategoryDataset getRoomDataset() throws IOException, BiffException {
-        Workbook workbook = Workbook.getWorkbook(new File("C:\\Users\\Kalgus\\Documents\\Events Macces 1 vecka.xls"));
+        WorkbookSettings ws = new WorkbookSettings();
+        ws.setEncoding("Cp1252");
+        Workbook workbook = Workbook.getWorkbook(new File("C:\\Users\\Kalgus\\Documents\\Events Macces 1 vecka.xls"), ws);
         Sheet sheet = workbook.getSheet(0);
 
         int rowsToCheck = sheet.getRows();
@@ -191,8 +193,9 @@ public class DatasetCreator {
             Date date = dateCell.getDate();
             cal.setTime(date);
             day = cal.get(Calendar.DAY_OF_MONTH);
+            System.out.println(day);
             String roomName = roomCell.getContents();
-
+            
             if (timestamps.contains(date)) {
 
                 if (roomName.contains("7001") && day == 12) { //Reception
