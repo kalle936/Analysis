@@ -39,7 +39,7 @@ public class DatasetCreator {
         Cell affectedCell;
         Cell temperatureCell;
 
-        List warningList = new ArrayList();
+        List warningDataset = new ArrayList();
         int rowsToCheck = sheet.getRows();
 
         for (int i = 1; i < rowsToCheck; i++) {
@@ -49,14 +49,14 @@ public class DatasetCreator {
                 affectedCell = sheet.getCell(2, i);
                 temperatureCell = sheet.getCell(5, i);
 
-                if (!warningList.contains(dateCell.getDate() + " | " + nameCell.getContents() + " | " + affectedCell.getContents())) {
-                    warningList.add(dateCell.getDate() + " | " + nameCell.getContents() + " | " + affectedCell.getContents() + " | " + temperatureCell.getContents());
+                if (!warningDataset.contains(dateCell.getDate() + " | " + nameCell.getContents() + " | " + affectedCell.getContents())) {
+                    warningDataset.add(dateCell.getDate() + " | " + nameCell.getContents() + " | " + affectedCell.getContents() + " | " + temperatureCell.getContents());
                 }
             }
 
         }
         workbook.close();
-        return warningList;
+        return warningDataset;
     }
 
     /**
@@ -78,7 +78,7 @@ public class DatasetCreator {
         Cell nameCell;
         Cell eventCell;
         Cell affectedCell;
-        List personalList = new ArrayList();
+        List personalDataset = new ArrayList();
         int rowsToCheck = sheet.getRows();
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 
@@ -88,15 +88,15 @@ public class DatasetCreator {
                 dateCell = (DateCell) sheet.getCell(0, i);
                 eventCell = sheet.getCell(1, i);
                 affectedCell = sheet.getCell(2, i);
-                if (!personalList.contains(dt.format(dateCell.getDate()) + " | " + eventCell.getContents() + " | " + affectedCell.getContents())) {
-                    personalList.add(dt.format(dateCell.getDate()) + " | " + eventCell.getContents() + " | " + affectedCell.getContents());
+                if (!personalDataset.contains(dt.format(dateCell.getDate()) + " | " + eventCell.getContents() + " | " + affectedCell.getContents())) {
+                    personalDataset.add(dt.format(dateCell.getDate()) + " | " + eventCell.getContents() + " | " + affectedCell.getContents());
                 }
             }
 
         }
 
         workbook.close();
-        return personalList;
+        return personalDataset;
 
     }
 
@@ -197,7 +197,7 @@ public class DatasetCreator {
             
             if (timestamps.contains(date)) {
 
-                if (roomName.contains("7001") && day == 12) { //Reception
+                if (roomName.contains("7001") && day == 12) { //Rece//ption
                     receptionCount12++;
                 } else if (roomName.contains("11001") && day == 12) { //Entrédörr lager
                     lagerCount12++;
