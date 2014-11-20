@@ -19,7 +19,7 @@ public class DatasetCreator {
 
     private DatasetCreator() throws BiffException, WriteException, IOException {
     }
-
+    private static List uniqueDateList = new ArrayList();
     /**
      * Method that creates a list of formatted strings containing all warnings
      * that exist in the excel file.
@@ -140,9 +140,11 @@ public class DatasetCreator {
             System.out.println(door);
 
             if (door.equalsIgnoreCase("Dörr Upplåst") || door.equals("Tvångsöppnad")) {
-                daySeen.add(dayRead);
-                number = countNumberEqual(daySeen, dayRead);
-                series.addOrUpdate(dayRead, number);
+                if (isUnique(date)) {
+                    daySeen.add(dayRead);
+                    number = countNumberEqual(daySeen, dayRead);
+                    series.addOrUpdate(dayRead, number);
+                }
             }
         }
 
@@ -254,5 +256,13 @@ public class DatasetCreator {
         }
         return count;
     }
-
+    
+    private static boolean isUnique(Date date) {
+        if(uniqueDateList.contains(date)){
+            return false;
+        }else{
+            uniqueDateList.add(date);
+            return true;
+        }
+    }
 }
