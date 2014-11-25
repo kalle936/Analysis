@@ -32,6 +32,8 @@ public class customDialog extends javax.swing.JFrame {
      */
     public customDialog() {
         initComponents();
+        this.setLocation(550, 350);
+        chooseButton.setEnabled(false);
         KeyStroke k = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
         int w = JComponent.WHEN_IN_FOCUSED_WINDOW;
         this.getRootPane().registerKeyboardAction(e -> this.dispose(), k, w);
@@ -53,7 +55,7 @@ public class customDialog extends javax.swing.JFrame {
         entreRadioButton = new javax.swing.JRadioButton();
         plan5RadioButton = new javax.swing.JRadioButton();
         nyckelRadioButton = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        chooseButton = new javax.swing.JButton();
 
         buttonGroup1.add(receptionRadioButton);
         receptionRadioButton.setText("Reception");
@@ -87,10 +89,10 @@ public class customDialog extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Välj");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        chooseButton.setText("Välj");
+        chooseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                chooseButtonActionPerformed(evt);
             }
         });
 
@@ -107,7 +109,7 @@ public class customDialog extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(nyckelRadioButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(chooseButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -121,7 +123,7 @@ public class customDialog extends javax.swing.JFrame {
                 .addComponent(plan5RadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(chooseButton)
                     .addComponent(nyckelRadioButton))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -141,22 +143,26 @@ public class customDialog extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nyckelRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nyckelRadioButtonActionPerformed
+        chooseButton.setEnabled(true);
         this.setChoice("14002");
     }//GEN-LAST:event_nyckelRadioButtonActionPerformed
 
     private void receptionRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receptionRadioButtonActionPerformed
+        chooseButton.setEnabled(true);
         this.setChoice("7001");
     }//GEN-LAST:event_receptionRadioButtonActionPerformed
 
     private void entreRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entreRadioButtonActionPerformed
+        chooseButton.setEnabled(true);
         this.setChoice("11001");
     }//GEN-LAST:event_entreRadioButtonActionPerformed
 
     private void plan5RadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plan5RadioButtonActionPerformed
+        chooseButton.setEnabled(true);
         this.setChoice("3002");
     }//GEN-LAST:event_plan5RadioButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void chooseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseButtonActionPerformed
         try {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             TimeSeriesCollection dataset = GraphHandler.getRoomTimeDataset(this.choice);
@@ -179,7 +185,7 @@ public class customDialog extends javax.swing.JFrame {
         } catch (IOException | BiffException ex) {
             Logger.getLogger(customDialog.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_chooseButtonActionPerformed
 
     public String getChoice() {
         return choice;
@@ -192,8 +198,8 @@ public class customDialog extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton chooseButton;
     private javax.swing.JRadioButton entreRadioButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton nyckelRadioButton;
     private javax.swing.JRadioButton plan5RadioButton;
