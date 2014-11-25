@@ -28,12 +28,14 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.time.TimeSeriesCollection;
 
 /**
- *Class that creates and displays the graphical user interface and it's components. fetches information
- *from the model layer with the help of the controller(s)
+ * Class that creates and displays the graphical user interface and it's
+ * components. fetches information from the model layer with the help of the
+ * controller(s)
+ *
  * @author kalgus
  */
 public class ApplicationView extends JFrame {
-    
+
     private int count = 0;
 
     /**
@@ -50,19 +52,19 @@ public class ApplicationView extends JFrame {
         int w = JComponent.WHEN_IN_FOCUSED_WINDOW;
         this.getRootPane().registerKeyboardAction(e -> System.exit(0), k, w);
         this.setLocation(400, 200);
-        
+
         warningMenuItem.setMnemonic(KeyEvent.VK_W);
         warningMenuItem.setAccelerator(KeyStroke.getKeyStroke(
                 KeyEvent.VK_W, ActionEvent.ALT_MASK));
-        
+
         timeGraphMenuItem.setMnemonic(KeyEvent.VK_T);
         timeGraphMenuItem.setAccelerator(KeyStroke.getKeyStroke(
                 KeyEvent.VK_T, ActionEvent.ALT_MASK));
-        
+
         roomGraphMenuItem.setMnemonic(KeyEvent.VK_R);
         roomGraphMenuItem.setAccelerator(KeyStroke.getKeyStroke(
                 KeyEvent.VK_R, ActionEvent.ALT_MASK));
-        
+
         JRootPane pane = SwingUtilities.getRootPane(searchButton);
         pane.setDefaultButton(searchButton);
     }
@@ -87,6 +89,7 @@ public class ApplicationView extends JFrame {
         menuBar = new javax.swing.JMenu();
         showMenuItem = new javax.swing.JMenu();
         warningMenuItem = new javax.swing.JMenuItem();
+        selectRoomMenuItem = new javax.swing.JMenuItem();
         timeGraphMenuItem = new javax.swing.JMenuItem();
         roomGraphMenuItem = new javax.swing.JMenuItem();
         exitMenuitem = new javax.swing.JMenuItem();
@@ -162,6 +165,15 @@ public class ApplicationView extends JFrame {
             }
         });
         showMenuItem.add(warningMenuItem);
+
+        selectRoomMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
+        selectRoomMenuItem.setText("Select room");
+        selectRoomMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectRoomMenuItemActionPerformed(evt);
+            }
+        });
+        showMenuItem.add(selectRoomMenuItem);
 
         timeGraphMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_MASK));
         timeGraphMenuItem.setText("Time Graph");
@@ -269,13 +281,13 @@ public class ApplicationView extends JFrame {
                     displayFrame.add(scrollPane);
                     displayFrame.setSize(500, 800);
                     displayFrame.setVisible(true);
-                    
+
                     KeyStroke k = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
                     int w = JComponent.WHEN_IN_FOCUSED_WINDOW;
                     displayFrame.getRootPane().registerKeyboardAction(e -> displayFrame.dispose(), k, w);
                 }
             }
-            
+
         } catch (IOException | BiffException ex) {
             Logger.getLogger(ApplicationView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -380,15 +392,15 @@ public class ApplicationView extends JFrame {
         } else {
             timeSlider.setEnabled(false);
             timeSlider.setValue(7);
-            
+
         }
     }//GEN-LAST:event_olleCheckBoxActionPerformed
 
     /**
-     * Method called when the warning option is chosen from the GUI. fetches the nessesary data
-     * and creates a window that will contain information about all the warnings that exist in the
-     * Excel file.
-     * 
+     * Method called when the warning option is chosen from the GUI. fetches the
+     * nessesary data and creates a window that will contain information about
+     * all the warnings that exist in the Excel file.
+     *
      * @param evt
      */
     private void warningMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_warningMenuItemActionPerformed
@@ -403,20 +415,21 @@ public class ApplicationView extends JFrame {
             displayFrame.setSize(583, 950);
             this.setCursor(Cursor.getDefaultCursor());
             displayFrame.setVisible(true);
-            
+
             KeyStroke k = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
             int w = JComponent.WHEN_IN_FOCUSED_WINDOW;
             displayFrame.getRootPane().registerKeyboardAction(e -> displayFrame.dispose(), k, w);
-            
+
         } catch (IOException | WriteException | BiffException ex) {
             Logger.getLogger(ApplicationView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_warningMenuItemActionPerformed
 
     /**
-     *Method that is called when the Time graph option is selected. it fetches the appropriate
-     * dataset and creates the time chart and makes it visible for the user.
-     * 
+     * Method that is called when the Time graph option is selected. it fetches
+     * the appropriate dataset and creates the time chart and makes it visible
+     * for the user.
+     *
      * @param evt
      */
     private void timeGraphMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeGraphMenuItemActionPerformed
@@ -445,9 +458,9 @@ public class ApplicationView extends JFrame {
     }//GEN-LAST:event_timeGraphMenuItemActionPerformed
 
     /**
-     * Method that asks the controller for a dataset and in turn creates the graph object
-     * needed to represent the data.
-     * 
+     * Method that asks the controller for a dataset and in turn creates the
+     * graph object needed to represent the data.
+     *
      * @param evt
      */
     private void roomGraphMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomGraphMenuItemActionPerformed
@@ -464,7 +477,7 @@ public class ApplicationView extends JFrame {
                     true,
                     false
             );
-            
+
             ChartFrame frame = new ChartFrame("Room Demo", objChart);
             frame.pack();
             KeyStroke k = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
@@ -481,6 +494,10 @@ public class ApplicationView extends JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitMenuitemActionPerformed
 
+    private void selectRoomMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectRoomMenuItemActionPerformed
+        new customDialog();
+    }//GEN-LAST:event_selectRoomMenuItemActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem exitMenuitem;
@@ -493,6 +510,7 @@ public class ApplicationView extends JFrame {
     private javax.swing.JMenuItem roomGraphMenuItem;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchField;
+    private javax.swing.JMenuItem selectRoomMenuItem;
     private javax.swing.JMenu showMenuItem;
     private javax.swing.JMenuItem timeGraphMenuItem;
     private javax.swing.JSlider timeSlider;

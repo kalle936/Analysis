@@ -20,7 +20,7 @@ public class DatasetCreator {
     private DatasetCreator() throws BiffException, WriteException, IOException {
     }
     private static List uniqueDateList = new ArrayList();
-    
+
     /**
      * Method that creates a list of formatted strings containing all warnings
      * that exist in the excel file.
@@ -149,6 +149,7 @@ public class DatasetCreator {
         }
 
         dataset.addSeries(series);
+        uniqueDateList.clear();
         workbook.close();
         return dataset;
     }
@@ -193,10 +194,9 @@ public class DatasetCreator {
             Date date = dateCell.getDate();
             cal.setTime(date);
             day = cal.get(Calendar.DAY_OF_MONTH);
-            System.out.println(day);
             String roomName = roomCell.getContents();
-            
-            if (timestamps.contains(date)) {
+
+            if (isUnique(date)) {
 
                 if (roomName.contains("7001") && day == 12) { //Reception
                     receptionCount12++;
@@ -240,9 +240,10 @@ public class DatasetCreator {
         objDataset.setValue(nyckelrumCount13, "Nyckelrum", "13/10");
         objDataset.setValue(nyckelrumCount14, "Nyckelrum", "14/10");
         workbook.close();
+        uniqueDateList.clear();
         return objDataset;
     }
-    
+
     public static TimeSeriesCollection getRoomTimeDataset(String choice) throws IOException, BiffException {
         WorkbookSettings ws = new WorkbookSettings();
         ws.setEncoding("Cp1252");
@@ -271,8 +272,8 @@ public class DatasetCreator {
             Cell doorCell = sheet.getCell(2, i);
             String door = doorCell.getContents();
 
-            if (door.contains(choice)) {
-                if (isUnique(date)) {
+            if (isUnique(date)) {
+                if (door.contains(choice)) {
                     daySeen.add(dayRead);
                     number = countNumberEqual(daySeen, dayRead);
                     series.addOrUpdate(dayRead, number);
@@ -282,8 +283,10 @@ public class DatasetCreator {
 
         dataset.addSeries(series);
         workbook.close();
+        uniqueDateList.clear();
         return dataset;
     }
+
     /**
      * Counts how many ocurrances of a certain Day already exists in a list.
      *
@@ -300,11 +303,11 @@ public class DatasetCreator {
         }
         return count;
     }
-    
+
     private static boolean isUnique(Date date) {
-        if(uniqueDateList.contains(date)){
+        if (uniqueDateList.contains(date)) {
             return false;
-        }else{
+        } else {
             uniqueDateList.add(date);
             return true;
         }

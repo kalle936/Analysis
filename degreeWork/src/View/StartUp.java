@@ -38,7 +38,6 @@ public class StartUp {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             try {
-                new customDialog().setVisible(true);
                 new ApplicationView().setVisible(true);
                 
             } catch (BiffException | WriteException | IOException ex) {
