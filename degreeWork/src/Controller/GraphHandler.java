@@ -25,4 +25,8 @@ public class GraphHandler {
         return DatasetCreator.getRoomDataset();
     }
 
+    public static TimeSeriesCollection getRoomTimeDataset(String choice) throws IOException, BiffException {
+        return DatasetCreator.getRoomTimeDataset(choice);
+    }
+
 }

@@ -20,6 +20,7 @@ public class DatasetCreator {
     private DatasetCreator() throws BiffException, WriteException, IOException {
     }
     private static List uniqueDateList = new ArrayList();
+    
     /**
      * Method that creates a list of formatted strings containing all warnings
      * that exist in the excel file.
@@ -135,10 +136,10 @@ public class DatasetCreator {
             month = cal.get(Calendar.MONTH) + 1;
             year = cal.get(Calendar.YEAR);
             dayRead = new Day(day, month, year);
-            Cell doorCell = sheet.getCell(1, i);
-            String door = doorCell.getContents();
+            Cell actionCell = sheet.getCell(1, i);
+            String action = actionCell.getContents();
 
-            if (door.equalsIgnoreCase("Dörr Upplåst") || door.equals("Tvångsöppnad")) {
+            if (action.equalsIgnoreCase("Dörr Upplåst") || action.equals("Tvångsöppnad")) {
                 if (isUnique(date)) {
                     daySeen.add(dayRead);
                     number = countNumberEqual(daySeen, dayRead);
@@ -197,7 +198,7 @@ public class DatasetCreator {
             
             if (timestamps.contains(date)) {
 
-                if (roomName.contains("7001") && day == 12) { //Rece//ption
+                if (roomName.contains("7001") && day == 12) { //Reception
                     receptionCount12++;
                 } else if (roomName.contains("11001") && day == 12) { //Entrédörr lager
                     lagerCount12++;
@@ -241,7 +242,48 @@ public class DatasetCreator {
         workbook.close();
         return objDataset;
     }
+    
+    public static TimeSeriesCollection getRoomTimeDataset(String choice) throws IOException, BiffException {
+        WorkbookSettings ws = new WorkbookSettings();
+        ws.setEncoding("Cp1252");
+        Workbook workbook = Workbook.getWorkbook(new File("C:\\Users\\Kalgus\\Documents\\Events Macces 1 vecka.xls"), ws);
+        Sheet sheet = workbook.getSheet(0);
+        TimeSeries series = new TimeSeries("time series", Day.class);
+        TimeSeriesCollection dataset = new TimeSeriesCollection();
 
+        int rowsToCheck = sheet.getRows();
+        int day;
+        int month;
+        int year;
+        int number;
+        Calendar cal = Calendar.getInstance();
+        List daySeen = new ArrayList();
+        Day dayRead;
+        for (int i = 1; i < rowsToCheck; i++) {
+
+            DateCell dateCell = (DateCell) sheet.getCell(0, i);
+            Date date = dateCell.getDate();
+            cal.setTime(date);
+            day = cal.get(Calendar.DAY_OF_MONTH);
+            month = cal.get(Calendar.MONTH) + 1;
+            year = cal.get(Calendar.YEAR);
+            dayRead = new Day(day, month, year);
+            Cell doorCell = sheet.getCell(2, i);
+            String door = doorCell.getContents();
+
+            if (door.contains(choice)) {
+                if (isUnique(date)) {
+                    daySeen.add(dayRead);
+                    number = countNumberEqual(daySeen, dayRead);
+                    series.addOrUpdate(dayRead, number);
+                }
+            }
+        }
+
+        dataset.addSeries(series);
+        workbook.close();
+        return dataset;
+    }
     /**
      * Counts how many ocurrances of a certain Day already exists in a list.
      *
