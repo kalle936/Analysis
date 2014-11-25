@@ -33,7 +33,7 @@ public class customDialog extends javax.swing.JFrame {
     public customDialog() {
         initComponents();
         this.setLocation(550, 350);
-        chooseButton.setEnabled(false);
+        okButton.setEnabled(false);
         KeyStroke k = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
         int w = JComponent.WHEN_IN_FOCUSED_WINDOW;
         this.getRootPane().registerKeyboardAction(e -> this.dispose(), k, w);
@@ -55,7 +55,8 @@ public class customDialog extends javax.swing.JFrame {
         entreRadioButton = new javax.swing.JRadioButton();
         plan5RadioButton = new javax.swing.JRadioButton();
         nyckelRadioButton = new javax.swing.JRadioButton();
-        chooseButton = new javax.swing.JButton();
+        okButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         buttonGroup1.add(receptionRadioButton);
         receptionRadioButton.setText("Reception");
@@ -89,12 +90,14 @@ public class customDialog extends javax.swing.JFrame {
             }
         });
 
-        chooseButton.setText("Välj");
-        chooseButton.addActionListener(new java.awt.event.ActionListener() {
+        okButton.setText("Ok");
+        okButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chooseButtonActionPerformed(evt);
+                okButtonActionPerformed(evt);
             }
         });
+
+        jLabel1.setText("Select Room");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -104,18 +107,20 @@ public class customDialog extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(receptionRadioButton)
-                    .addComponent(entreRadioButton)
                     .addComponent(plan5RadioButton)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(nyckelRadioButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(chooseButton)))
+                        .addComponent(okButton))
+                    .addComponent(entreRadioButton)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(receptionRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(entreRadioButton)
@@ -123,7 +128,7 @@ public class customDialog extends javax.swing.JFrame {
                 .addComponent(plan5RadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chooseButton)
+                    .addComponent(okButton)
                     .addComponent(nyckelRadioButton))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -143,26 +148,26 @@ public class customDialog extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nyckelRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nyckelRadioButtonActionPerformed
-        chooseButton.setEnabled(true);
+        okButton.setEnabled(true);
         this.setChoice("14002");
     }//GEN-LAST:event_nyckelRadioButtonActionPerformed
 
     private void receptionRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receptionRadioButtonActionPerformed
-        chooseButton.setEnabled(true);
+        okButton.setEnabled(true);
         this.setChoice("7001");
     }//GEN-LAST:event_receptionRadioButtonActionPerformed
 
     private void entreRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entreRadioButtonActionPerformed
-        chooseButton.setEnabled(true);
+        okButton.setEnabled(true);
         this.setChoice("11001");
     }//GEN-LAST:event_entreRadioButtonActionPerformed
 
     private void plan5RadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plan5RadioButtonActionPerformed
-        chooseButton.setEnabled(true);
+        okButton.setEnabled(true);
         this.setChoice("3002");
     }//GEN-LAST:event_plan5RadioButtonActionPerformed
 
-    private void chooseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseButtonActionPerformed
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         try {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             TimeSeriesCollection dataset = GraphHandler.getRoomTimeDataset(this.choice);
@@ -185,7 +190,7 @@ public class customDialog extends javax.swing.JFrame {
         } catch (IOException | BiffException ex) {
             Logger.getLogger(customDialog.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_chooseButtonActionPerformed
+    }//GEN-LAST:event_okButtonActionPerformed
 
     public String getChoice() {
         return choice;
@@ -198,10 +203,11 @@ public class customDialog extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton chooseButton;
     private javax.swing.JRadioButton entreRadioButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton nyckelRadioButton;
+    private javax.swing.JButton okButton;
     private javax.swing.JRadioButton plan5RadioButton;
     private javax.swing.JRadioButton receptionRadioButton;
     // End of variables declaration//GEN-END:variables
