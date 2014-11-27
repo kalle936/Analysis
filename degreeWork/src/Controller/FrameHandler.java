@@ -12,8 +12,9 @@ import jxl.read.biff.BiffException;
 import jxl.write.WriteException;
 
 /**
- *Controller class to make it unable for the view layer to interact with the model layer
- * 
+ * Controller class to make it unable for the view layer to interact with the
+ * model layer
+ *
  * @author Kalgus
  */
 public class FrameHandler {

@@ -12,7 +12,9 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.time.TimeSeriesCollection;
 
 /**
- *Controller class to make it unable for the view layer to interact with the model layer
+ * Controller class to make it unable for the view layer to interact with the
+ * model layer
+ *
  * @author Kalgus
  */
 public class GraphHandler {
