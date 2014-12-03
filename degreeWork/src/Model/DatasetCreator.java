@@ -171,18 +171,22 @@ public class DatasetCreator {
         Sheet sheet = workbook.getSheet(0);
 
         int rowsToCheck = sheet.getRows();
-        int receptionCount12 = 0;
-        int lagerCount12 = 0;
-        int plan5Count12 = 0;
-        int nyckelrumCount12 = 0;
-        int receptionCount13 = 0;
-        int lagerCount13 = 0;
-        int plan5Count13 = 0;
-        int nyckelrumCount13 = 0;
-        int receptionCount14 = 0;
-        int lagerCount14 = 0;
-        int plan5Count14 = 0;
-        int nyckelrumCount14 = 0;
+        int receptionCount03 = 0;
+        int lagerCount03 = 0;
+        int plan5Count03 = 0;
+        int nyckelrumCount03 = 0;
+        int receptionCount04 = 0;
+        int lagerCount04 = 0;
+        int plan5Count04 = 0;
+        int nyckelrumCount04 = 0;
+        int receptionCount05 = 0;
+        int lagerCount05 = 0;
+        int plan5Count05 = 0;
+        int nyckelrumCount05 = 0;
+        int receptionCount06 = 0;
+        int lagerCount06 = 0;
+        int plan5Count06 = 0;
+        int nyckelrumCount06 = 0;
         int day;
         List timestamps = new ArrayList();
         Calendar cal = Calendar.getInstance();
@@ -198,47 +202,59 @@ public class DatasetCreator {
 
             if (isUnique(date)) {
 
-                if (roomName.contains("7001") && day == 12) { //Reception
-                    receptionCount12++;
-                } else if (roomName.contains("11001") && day == 12) { //Entrédörr lager
-                    lagerCount12++;
-                } else if (roomName.contains("3002") && day == 12) { //trapphus
-                    plan5Count12++;
-                } else if (roomName.contains("14002") && day == 12) { //nyckelrum
-                    nyckelrumCount12++;
-                } else if (roomName.contains("7001") && day == 13) { //Reception
-                    receptionCount13++;
-                } else if (roomName.contains("11001") && day == 13) { //Entrédörr lager
-                    lagerCount13++;
-                } else if (roomName.contains("3002") && day == 13) { //trapphus
-                    plan5Count13++;
-                } else if (roomName.contains("14002") && day == 13) { //nyckelrum
-                    nyckelrumCount13++;
-                } else if (roomName.contains("7001") && day == 14) { //Reception
-                    receptionCount14++;
-                } else if (roomName.contains("11001") && day == 14) { //Entrédörr lager
-                    lagerCount14++;
-                } else if (roomName.contains("3002") && day == 14) { //trapphus
-                    plan5Count14++;
-                } else if (roomName.contains("14002") && day == 14) { //nyckelrum
-                    nyckelrumCount14++;
+                if (roomName.contains("7001") && day == 3) { //Reception
+                    receptionCount03++;
+                } else if (roomName.contains("11001") && day == 3) { //Entrédörr lager
+                    lagerCount03++;
+                } else if (roomName.contains("3002") && day == 3) { //trapphus
+                    plan5Count03++;
+                } else if (roomName.contains("14002") && day == 3) { //nyckelrum
+                    nyckelrumCount03++;
+                } else if (roomName.contains("7001") && day == 4) { //Reception
+                    receptionCount04++;
+                } else if (roomName.contains("11001") && day == 4) { //Entrédörr lager
+                    lagerCount04++;
+                } else if (roomName.contains("3002") && day == 4) { //trapphus
+                    plan5Count04++;
+                } else if (roomName.contains("14002") && day == 4) { //nyckelrum
+                    nyckelrumCount04++;
+                } else if (roomName.contains("7001") && day == 5) { //Reception
+                    receptionCount05++;
+                } else if (roomName.contains("11001") && day == 5) { //Entrédörr lager
+                    lagerCount05++;
+                } else if (roomName.contains("3002") && day == 5) { //trapphus
+                    plan5Count05++;
+                } else if (roomName.contains("14002") && day == 5) { //nyckelrum
+                    nyckelrumCount05++;
+                } else if (roomName.contains("7001") && day == 6) { //Reception
+                    receptionCount06++;
+                } else if (roomName.contains("11001") && day == 6) { //Entrédörr lager
+                    lagerCount06++;
+                } else if (roomName.contains("3002") && day == 6) { //trapphus
+                    plan5Count06++;
+                } else if (roomName.contains("14002") && day == 6) { //nyckelrum
+                    nyckelrumCount06++;
                 }
             } else {
                 timestamps.add(date);
             }
         }
-        objDataset.setValue(receptionCount12, "Reception", "12/10");
-        objDataset.setValue(receptionCount13, "Reception", "13/10");
-        objDataset.setValue(receptionCount14, "Reception", "14/10");
-        objDataset.setValue(lagerCount12, "Entrédörr lager", "12/10");
-        objDataset.setValue(lagerCount13, "Entrédörr lager", "13/10");
-        objDataset.setValue(lagerCount14, "Entrédörr lager", "14/10");
-        objDataset.setValue(plan5Count12, "Plan 5", "12/10");
-        objDataset.setValue(plan5Count13, "Plan 5", "13/10");
-        objDataset.setValue(plan5Count14, "Plan 5", "14/10");
-        objDataset.setValue(nyckelrumCount12, "Nyckelrum", "12/10");
-        objDataset.setValue(nyckelrumCount13, "Nyckelrum", "13/10");
-        objDataset.setValue(nyckelrumCount14, "Nyckelrum", "14/10");
+        objDataset.setValue(receptionCount03, "Reception", "3/11");
+        objDataset.setValue(receptionCount04, "Reception", "4/11");
+        objDataset.setValue(receptionCount05, "Reception", "5/11");
+        objDataset.setValue(receptionCount06, "Reception", "6/11");
+        objDataset.setValue(lagerCount03, "Entrédörr lager", "3/11");
+        objDataset.setValue(lagerCount04, "Entrédörr lager", "4/11");
+        objDataset.setValue(lagerCount05, "Entrédörr lager", "5/11");
+        objDataset.setValue(lagerCount06, "Entrédörr lager", "6/11");
+        objDataset.setValue(plan5Count03, "Plan 5", "3/11");
+        objDataset.setValue(plan5Count04, "Plan 5", "4/11");
+        objDataset.setValue(plan5Count05, "Plan 5", "5/11");
+        objDataset.setValue(plan5Count06, "Plan 5", "6/11");
+        objDataset.setValue(nyckelrumCount03, "Nyckelrum", "3/11");
+        objDataset.setValue(nyckelrumCount04, "Nyckelrum", "4/11");
+        objDataset.setValue(nyckelrumCount05, "Nyckelrum", "5/11");
+        objDataset.setValue(nyckelrumCount06, "Nyckelrum", "6/11");
         workbook.close();
         uniqueDateList.clear();
         return objDataset;
