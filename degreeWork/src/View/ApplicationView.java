@@ -498,7 +498,7 @@ public class ApplicationView extends JFrame {
         customDialog customDialog = new customDialog();
     }//GEN-LAST:event_selectRoomMenuItemActionPerformed
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem exitMenuitem;
     private javax.swing.JComboBox jComboBox1;
