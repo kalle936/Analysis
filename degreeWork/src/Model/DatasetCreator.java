@@ -20,6 +20,7 @@ public class DatasetCreator {
     private DatasetCreator() throws BiffException, WriteException, IOException {
     }
     private static List uniqueDateList = new ArrayList();
+    private static int rowsToCheck;
 
     /**
      * Method that creates a list of formatted strings containing all warnings
@@ -119,7 +120,7 @@ public class DatasetCreator {
         TimeSeries series = new TimeSeries("time series", Day.class);
         TimeSeriesCollection dataset = new TimeSeriesCollection();
 
-        int rowsToCheck = sheet.getRows();
+        rowsToCheck = sheet.getRows();
         int day;
         int month;
         int year;
@@ -170,7 +171,7 @@ public class DatasetCreator {
         Workbook workbook = Workbook.getWorkbook(new File("C:\\Users\\Kalgus\\Documents\\Events Macces 1 vecka.xls"), ws);
         Sheet sheet = workbook.getSheet(0);
 
-        int rowsToCheck = sheet.getRows();
+        rowsToCheck = sheet.getRows();
         int receptionCount03 = 0;
         int lagerCount03 = 0;
         int plan5Count03 = 0;
@@ -268,7 +269,7 @@ public class DatasetCreator {
         TimeSeries series = new TimeSeries("time series", Day.class);
         TimeSeriesCollection dataset = new TimeSeriesCollection();
 
-        int rowsToCheck = sheet.getRows();
+        rowsToCheck = sheet.getRows();
         int day;
         int month;
         int year;
